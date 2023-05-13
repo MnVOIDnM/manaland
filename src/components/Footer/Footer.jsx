@@ -1,9 +1,13 @@
+import { Container, Text } from "@chakra-ui/react";
 
 function Footer() {
   return (
-    <footer class="bg-gray-50 dark:bg-gray-700 fixed bottom-0 z-20 w-full p-1 border-t border-gray-200">
-      <h1 class="text-gray-900 dark:text-white text-sm sm:text-center">© 2023 まなランド</h1></footer>
-  )
+    <Container as="footer" role="contentinfo" py={{ base: "12", md: "16" }}>
+      <Text fontSize="sm" color="subtle" textAlign="center">
+        &copy; 2023 まなランド
+      </Text>
+    </Container>
+  );
 }
 
-export default Footer
+export default Footer;

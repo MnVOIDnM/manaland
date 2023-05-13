@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import CapitalQuizApp from "./pages/CapitalQuizApp";
@@ -10,6 +9,7 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import { RecoilRoot } from "recoil";
 import CapitalQuizPlay from "./components/CapitalQuiz/CapitalQuizPlay";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
   {
@@ -24,48 +24,34 @@ const router = createBrowserRouter([
       {
         path: "capital-quiz",
         element: <CapitalQuizApp />,
-        children: [
-          {
-            path: "play",
-            element: <CapitalQuizPlay />,
-          },
-          {
-            path: "result",
-          },
-        ],
+      },
+      {
+        path: "capital-quiz/play",
+        element: <CapitalQuizPlay />,
+        errorElement: <CapitalQuizApp />,
+      },
+      {
+        path: "capital-quiz/result",
+        // element: <CapitalQuizResult />,
       },
       {
         path: "pref-quiz",
         element: <PrefQuizApp />,
-        children: [
-          {
-            path: "play",
-          },
-          {
-            path: "result",
-          },
-        ],
       },
       {
         path: "map-icon-quiz",
         element: <MapIconQuizApp />,
-        children: [
-          {
-            path: "play",
-          },
-          {
-            path: "result",
-          },
-        ],
       },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RecoilRoot>
+  // <React.StrictMode>
+  <RecoilRoot>
+    <ChakraProvider>
       <RouterProvider router={router} />
-    </RecoilRoot>
-  </React.StrictMode>
+    </ChakraProvider>
+  </RecoilRoot>
+  // </React.StrictMode>
 );

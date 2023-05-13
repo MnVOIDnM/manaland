@@ -1,28 +1,23 @@
-import { Link } from "react-router-dom"
+import { Box, Button, Container, Flex, HStack } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <nav class="bg-gray-50 dark:bg-gray-700">
-    <div class="max-w-screen-xl pl-3 py-1 mx-auto">
-        <div class="flex items-center">
-            <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
-                <li>
-                    <Link to="home" class="text-gray-900 dark:text-white hover:underline">ホーム</Link>
-                </li>
-                <li>
-                    <Link to="pref-quiz" class="text-gray-900 dark:text-white hover:underline">都道府県クイズ</Link>
-                </li>
-                <li>
-                    <Link to="capital-quiz" class="text-gray-900 dark:text-white hover:underline" aria-current="page">県庁所在地クイズ</Link>
-                </li>
-                <li>
-                    <Link to="map-icon-quiz" class="text-gray-900 dark:text-white hover:underline">地図記号クイズ</Link>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-  )
+    <Box as="section">
+      <Box as="nav" bg="bg-surface" boxShadow="sm">
+        <Container py={{ base: "2", lg: "3" }}>
+          <HStack>
+            <Flex justifyContent="space-between" alignItems="center" w="100%">
+              <Link to="home">ホーム</Link>
+              <Link to="pref-quiz">都道府県クイズ</Link>
+              <Link to="capital-quiz">県庁所在地クイズ</Link>
+              <Link to="map-icon-quiz">地図記号クイズ</Link>
+            </Flex>
+          </HStack>
+        </Container>
+      </Box>
+    </Box>
+  );
 }
 
-export default Header
+export default Header;
