@@ -1,27 +1,35 @@
+import { useEffect } from "react";
 import { Button, Heading, VStack } from "@chakra-ui/react";
-import { useSetRecoilState } from "recoil";
-import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { createCapitalQuiz } from "../utils/helper";
-import { imageUrlsState, quizQueueState } from "../atoms/capital_quiz_atoms";
-import { Link } from "react-router-dom";
-import { imgSingleUrls } from "../utils/imgURL/imgSingleUrl";
+import SelectQuizSize from "../components/SelectQuizSize";
+import { useInitializeQuiz } from "../hooks/useInitializeQuiz";
 
 function CapitalQuizApp() {
-  const setQuizQueue = useSetRecoilState(quizQueueState);
-  const setImageUrls = useSetRecoilState(imageUrlsState);
+  const navigate = useNavigate();
+  const initQuiz = useInitializeQuiz(createCapitalQuiz);
 
   useEffect(() => {
-    setQuizQueue(createCapitalQuiz());
-    setImageUrls(imgSingleUrls);
-  }, []);
+    initQuiz();
+  }, [initQuiz]);
 
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <VStack justifyContent="center" alignItems="center" height="100vh">
-        <Heading>県庁所在地クイズ</Heading>
-        <Link to="play">start</Link>
-      </VStack>
-    </React.Suspense>
+    <VStack justifyContent="center" alignItems="center" height="60vh">
+      <Heading m={5}>県庁所在地クイズ</Heading>
+      <SelectQuizSize />
+      <Button
+        onClick={() => navigate("/play")}
+        fontSize="2xl"
+        size="lg"
+        w="200px"
+        p={5}
+        colorScheme="whatsapp"
+        variant="outline"
+        border="2px"
+      >
+        スタート
+      </Button>
+    </VStack>
   );
 }
 

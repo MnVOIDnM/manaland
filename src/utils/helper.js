@@ -1,5 +1,16 @@
 import { prefData } from "../utils/prefData";
 
+export const determineColorScheme = (state) => {
+  switch (state) {
+    case "correct":
+      return "green";
+    case "incorrect":
+      return "red";
+    default:
+      return "gray";
+  }
+};
+
 const shuffle = (arr) => {
   const newArr = [...arr];
   for (let i = newArr.length - 1; i >= 0; i--) {
@@ -17,10 +28,28 @@ export const createCapitalQuiz = () => {
     return shuffle(choices);
   });
 
-  const queue = {
+  return {
     choices: quizChoices,
     answer: shuffledData,
   };
+};
 
-  return queue;
+export const createPrefQuiz = () => {
+  const shuffledData = shuffle(prefData);
+
+  const quizChoices = shuffledData.map((answer, index) => {
+    const restData = shuffledData.filter((_, idx) => idx !== index);
+    const fake = shuffle(restData)
+      .slice(0, 3)
+      .map((data) => {
+        return data.name;
+      });
+    const choices = [...fake, answer.name];
+    return shuffle(choices);
+  });
+
+  return {
+    choices: quizChoices,
+    answer: shuffledData,
+  };
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <Box as="section">
-      <Box as="nav" bg="bg-surface" boxShadow="sm">
+      <Box as="nav" boxShadow="sm">
         <Container py={{ base: "2", lg: "3" }}>
           <HStack>
             <Flex justifyContent="space-between" alignItems="center" w="100%">

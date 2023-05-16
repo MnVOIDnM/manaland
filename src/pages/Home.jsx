@@ -1,18 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Button, ButtonGroup, Flex, Heading } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
-    <div>
-      <div>
-        <h2>社会</h2>
-        <div>
-          <Link to="../pref-quiz">都道府県クイズ</Link>
-          <Link to="../capital-quiz">県庁所在地クイズ</Link>
-          <Link to="../map-icon-quiz">地図記号クイズ</Link>
-        </div>
-      </div>
-    </div>
+    <Flex direction="column" align="center" justify="center" h="50vh">
+      <Heading p={10}>社会</Heading>
+      <ButtonGroup>
+        <Button onClick={() => navigate("/pref-quiz")}>都道府県クイズ</Button>
+        <Button onClick={() => navigate("/capital-quiz")}>
+          県庁所在地クイズ
+        </Button>
+        <Button onClick={() => navigate("/map-icon-quiz")}>
+          地図記号クイズ
+        </Button>
+      </ButtonGroup>
+    </Flex>
   );
 };
 

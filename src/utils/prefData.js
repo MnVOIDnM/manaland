@@ -135,7 +135,7 @@ export const prefData = [
     id: 13,
     name: "東京都",
     nameKana: "とうきょう都",
-    city: "東京2",
+    city: "東京",
     cityKana: "とうきょう",
     fakes: ["杉並区", "練馬区", "足立区"],
     imgSingle: "img/imgSingle/tokyoSingle.png",

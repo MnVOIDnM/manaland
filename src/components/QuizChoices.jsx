@@ -1,42 +1,71 @@
-import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { quizQueueState } from "../atoms/capital_quiz_atoms";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Button, Flex, SimpleGrid } from "@chakra-ui/react";
+import { counterState, quizSizeState } from "../state/capital_quiz_atoms";
+import { useNavigate } from "react-router-dom";
+import {
+  quizAnswerState,
+  quizChoicesState,
+} from "../state/capital_quiz_selectors";
+import { determineColorScheme } from "../utils/helper";
 
-const QuizChoices = React.memo(({ updateQuiz, counter }) => {
-  const quizQueue = useRecoilValue(quizQueueState);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [choiceButtonColor, setChoiceButtonColor] = useState("gray");
+const QuizChoices = React.memo(() => {
+  const navigate = useNavigate();
+  const [quizSize, setQuizSize] = useRecoilState(quizSizeState);
+  const [counter, setCounter] = useRecoilState(counterState);
+  const [buttonState, setButtonState] = useState("default");
+  const answer = useRecoilValue(quizAnswerState(counter));
+  const choices = useRecoilValue(quizChoicesState(counter));
 
-  function setButtonEffect(color, timeout) {
-    setIsButtonDisabled(true);
-    setChoiceButtonColor(color);
-    setTimeout(() => {
-      setIsButtonDisabled(false);
-      setChoiceButtonColor("gray");
-    }, timeout);
-  }
-  const judge = (select) => {
-    if (select === quizQueue.answer[counter].city) {
-      setButtonEffect("green", 200);
-      updateQuiz();
+  const { city, name, id } = answer;
+
+  const updateQuiz = useCallback(() => {
+    if (quizSize > counter + 1) {
+      setCounter((prev) => prev + 1);
     } else {
-      setButtonEffect("red", 500);
+      navigate("/capital-quiz");
     }
-  };
+  }, [navigate, quizSize, counter, setCounter, setQuizSize]);
+
+  const judgeChoice = useCallback(
+    (select) => {
+      if (select === city || select === name) {
+        updateQuiz();
+        setButtonState("correct");
+      } else {
+        setButtonState("incorrect");
+      }
+    },
+    [city, name, updateQuiz]
+  );
+
+  useEffect(() => {
+    let timer;
+    if (buttonState === "correct" || buttonState === "incorrect") {
+      timer = setTimeout(
+        () => {
+          setButtonState("default");
+        },
+        buttonState === "correct" ? 200 : 500
+      );
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [buttonState]);
 
   return (
-    <Flex h="85%">
+    <Flex px={5}>
       <SimpleGrid columns={2} spacing={5}>
-        {quizQueue.choices[counter].map((choice) => (
+        {choices.map((choice) => (
           <Button
             h="20vh"
             w="20vh"
-            colorScheme={choiceButtonColor}
-            fontSize="4xl"
-            key={choice}
-            isDisabled={isButtonDisabled}
-            onClick={() => judge(choice)}
+            colorScheme={determineColorScheme(buttonState)}
+            fontSize="3xl"
+            key={`${choice}-${id}`}
+            isDisabled={buttonState !== "default"}
+            onClick={() => judgeChoice(choice)}
           >
             {choice}
           </Button>
