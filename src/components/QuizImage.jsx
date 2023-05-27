@@ -6,18 +6,24 @@ import {
   gameModeState,
   quizQueueState,
 } from "../state/capital_quiz_atoms";
+import { quizAnswerState } from "../state/capital_quiz_selectors";
 
 const QuizImage = React.memo(() => {
-  const quizQueue = useRecoilValue(quizQueueState);
   const counter = useRecoilValue(counterState);
   const gameMode = useRecoilValue(gameModeState);
-  const { name, imgSingle } = quizQueue.answer[counter];
+  const answer = useRecoilValue(quizAnswerState(counter));
+
+  const { image, imgSingle, name } = answer;
 
   return (
     <VStack>
-      {gameMode === "pref" ? null : <Heading size="4xl">{name}</Heading>}
+      {gameMode === "capital" ? <Heading size="4xl">{name}</Heading> : null}
       <Square size="60vh" m={5}>
-        <Img src={imgSingle} alt={`image ${name}`} />
+        {gameMode === "mapicon" ? (
+          <Img src={image} alt={`image ${name}`} />
+        ) : (
+          <Img src={imgSingle} alt={`image ${name}`} />
+        )}
       </Square>
     </VStack>
   );

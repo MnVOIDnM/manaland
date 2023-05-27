@@ -8,8 +8,8 @@ function Root() {
     <Flex direction="column" flex="1">
       <Header />
       <Outlet />
-      <Navigate to="home" />
       <Footer />
+      <Navigate to="home" />
     </Flex>
   );
 }

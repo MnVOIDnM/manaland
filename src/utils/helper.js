@@ -1,4 +1,5 @@
-import { prefData } from "../utils/prefData";
+import { mapiconData } from "./mapiconData";
+import { prefData } from "./prefData";
 
 export const determineColorScheme = (state) => {
   switch (state) {
@@ -34,8 +35,8 @@ export const createCapitalQuiz = () => {
   };
 };
 
-export const createPrefQuiz = () => {
-  const shuffledData = shuffle(prefData);
+function createChoice(data) {
+  const shuffledData = shuffle(data);
 
   const quizChoices = shuffledData.map((answer, index) => {
     const restData = shuffledData.filter((_, idx) => idx !== index);
@@ -52,4 +53,12 @@ export const createPrefQuiz = () => {
     choices: quizChoices,
     answer: shuffledData,
   };
+}
+
+export const createPrefQuiz = () => {
+  return createChoice(prefData);
+};
+
+export const createMapiconQuiz = () => {
+  return createChoice(mapiconData);
 };

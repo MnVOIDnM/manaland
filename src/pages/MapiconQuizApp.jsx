@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Button, Heading, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { createPrefQuiz } from "../utils/helper";
-import { imgSingleUrls } from "../utils/imgURL/imgSingleUrl";
+import { createMapiconQuiz } from "../utils/helper";
 import SelectQuizSize from "../components/SelectQuizSize";
+import { mapiconUrl } from "../utils/imgURL/mapiconUrl";
+import { useSetRecoilState } from "recoil";
 import {
   counterState,
   gameModeState,
@@ -13,9 +13,8 @@ import {
   quizSizeState,
 } from "../state/capital_quiz_atoms";
 
-function PrefQuizApp() {
+function MapIconQuizApp() {
   const navigate = useNavigate();
-
   const setQuizQueue = useSetRecoilState(quizQueueState);
   const setImageUrls = useSetRecoilState(imageUrlsState);
   const setGameMode = useSetRecoilState(gameModeState);
@@ -23,19 +22,27 @@ function PrefQuizApp() {
   const setQuizSize = useSetRecoilState(quizSizeState);
 
   useEffect(() => {
-    setQuizQueue(createPrefQuiz);
-    setGameMode("pref");
+    setQuizQueue(createMapiconQuiz);
+    setGameMode("mapicon");
     setCounter(0);
     setQuizSize(10);
-    setImageUrls(imgSingleUrls);
+    setImageUrls(mapiconUrl);
   }, []);
 
   return (
     <VStack justifyContent="center" alignItems="center" height="60vh">
-      <Heading m={5}>都道府県クイズ</Heading>
-      <SelectQuizSize quizSizeOptions={["20", "30", "47"]} />
+      <Heading m={5}>地図記号クイズ</Heading>
+      <SelectQuizSize quizSizeOptions={["30", "50", "70"]} />
+      {/* {difficulty === "easy" ? (
+        <SelectQuizSize quizSizeOptions={["20", "35"]} />
+      ) : "hard" ? (
+        <SelectQuizSize quizSizeOptions={["20", "35"]} />
+      ) : (
+        <SelectQuizSize quizSizeOptions={["30", "50", "70"]} />
+      )} */}
       <Button
         onClick={() => navigate("/play")}
+        三項
         fontSize="2xl"
         size="lg"
         w="200px"
@@ -50,4 +57,4 @@ function PrefQuizApp() {
   );
 }
 
-export default PrefQuizApp;
+export default MapIconQuizApp;

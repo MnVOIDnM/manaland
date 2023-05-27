@@ -1,0 +1,14 @@
+<svg class="svgOrigin" xmlns="http://www.w3.org/2000/svg" width="400" height="400" x="0px" y="0px" viewBox="0 0 400 400" enable-background="new 0 0 400 400">
+<g>
+	<circle fill="none" stroke="#000000" stroke-width="14.4777" cx="200" cy="200" r="76.149399"/>
+	<line fill="none" stroke="#000000" stroke-width="14.4777" x1="200" y1="123.850609" x2="200" y2="44.986809"/>
+	<line fill="none" stroke="#000000" stroke-width="14.4777" x1="146.153793" y1="146.161102" x2="90.392097" y2="90.399406"/>
+	<polyline fill="none" stroke="#000000" stroke-width="14.4777" points="276.149384,200.028305 387.644501,200.028305 
+		387.644501,44.986809 	"/>
+	<polyline fill="none" stroke="#000000" stroke-width="14.4777" points="123.850594,200 12.3555,200 12.3555,355.013702 	"/>
+	<line fill="none" stroke="#000000" stroke-width="14.4777" x1="146.168503" y1="253.867203" x2="90.4067" y2="309.629913"/>
+	<line fill="none" stroke="#000000" stroke-width="14.4777" x1="200.014191" y1="276.149414" x2="200.014191" y2="355.013702"/>
+	<line fill="none" stroke="#000000" stroke-width="14.4777" x1="253.8535" y1="253.839798" x2="309.615204" y2="309.600586"/>
+	<line fill="none" stroke="#000000" stroke-width="14.4777" x1="253.8535" y1="146.161102" x2="309.600586" y2="90.399406"/>
+</g>
+</svg>

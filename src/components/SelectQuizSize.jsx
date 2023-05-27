@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 import { quizSizeState } from "../state/capital_quiz_atoms";
 import RadioCard from "./RadioCard";
 
-const SelectQuizSize = React.memo(() => {
+const SelectQuizSize = React.memo(({ quizSizeOptions }) => {
   const setQuizSize = useSetRecoilState(quizSizeState);
 
   function handleChange(value) {
@@ -12,7 +12,7 @@ const SelectQuizSize = React.memo(() => {
   }
 
   const DEFAULT_QUIZ_SIZE = "10";
-  const QUIZ_SIZE_OPTIONS = [DEFAULT_QUIZ_SIZE, "20", "30", "47"];
+  const QUIZ_SIZE_OPTIONS = [DEFAULT_QUIZ_SIZE, ...quizSizeOptions];
   const { getRootProps, getRadioProps } = useRadioGroup({
     defaultValue: DEFAULT_QUIZ_SIZE,
     onChange: handleChange,

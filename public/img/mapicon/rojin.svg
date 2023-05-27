@@ -1,0 +1,11 @@
+<svg class="svgOrigin" xmlns="http://www.w3.org/2000/svg" width="400" height="400" x="0px" y="0px" viewBox="0 0 400 400" enable-background="new 0 0 400 400">
+<g>
+	<line fill="none" stroke="#000000" stroke-width="14.8434" x1="7.84814" y1="371.27829" x2="392.151398" y2="371.27829"/>
+	<polyline fill="none" stroke="#000000" stroke-width="14.8434" points="7.84814,178.604507 200,28.72171 392.151398,178.604507 	
+		"/>
+	<line fill="none" stroke="#000000" stroke-width="14.8434" x1="75.2808" y1="371.27829" x2="75.2808" y2="126.01561"/>
+	<line fill="none" stroke="#000000" stroke-width="14.8434" x1="324.718781" y1="126.01561" x2="324.718781" y2="371.27829"/>
+	<path fill="none" stroke="#000000" stroke-width="14.8434" d="M243.3564,371.27829V180.808105
+		c0-23.047806-18.685501-41.747101-41.748001-41.747101c-23.061508,0-41.746597,18.699295-41.746597,41.747101v44.878403"/>
+</g>
+</svg>

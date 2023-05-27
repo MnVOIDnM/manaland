@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Button, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { counterState, quizSizeState } from "../state/capital_quiz_atoms";
 import { useNavigate } from "react-router-dom";
 import {
@@ -59,15 +59,18 @@ const QuizChoices = React.memo(() => {
       <SimpleGrid columns={2} spacing={5}>
         {choices.map((choice) => (
           <Button
-            h="20vh"
-            w="20vh"
+            h="25vh"
+            w="25vh"
+            maxW="25vh"
+            p={0}
             colorScheme={determineColorScheme(buttonState)}
-            fontSize="3xl"
+            fontSize="2xl"
+            whiteSpace="normal"
             key={`${choice}-${id}`}
             isDisabled={buttonState !== "default"}
             onClick={() => judgeChoice(choice)}
           >
-            {choice}
+            <Text textAlign="center">{choice}</Text>
           </Button>
         ))}
       </SimpleGrid>

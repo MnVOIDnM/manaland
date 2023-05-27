@@ -1,0 +1,10 @@
+<svg class="svgOrigin" xmlns="http://www.w3.org/2000/svg" width="400" height="400" x="0px" y="0px" viewBox="0 0 400 400" enable-background="new 0 0 400 400">
+<g>
+	
+		<ellipse transform="matrix(0.707107 -0.707107 0.707107 0.707107 -82.842842 199.999954)" fill="none" stroke="#000000" stroke-width="22.7071" cx="199.999878" cy="200.000122" rx="184.717484" ry="184.717361"/>
+	<line fill="none" stroke="#000000" stroke-width="22.7071" x1="363.09668" y1="113.273407" x2="36.880901" y2="113.273407"/>
+	<line fill="none" stroke="#000000" stroke-width="22.7071" x1="76.574203" y1="337.440399" x2="281.669891" y2="113.273407"/>
+	<line fill="none" stroke="#000000" stroke-width="22.7071" x1="118.085899" y1="113.273407" x2="323.425781" y2="337.440399"/>
+	<line fill="none" stroke="#000000" stroke-width="22.7071" x1="200" y1="15.28271" x2="200" y2="113.273407"/>
+</g>
+</svg>

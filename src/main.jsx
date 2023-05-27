@@ -6,7 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import ErrorPage from "./pages/ErrorPage";
 import CapitalQuizApp from "./pages/CapitalQuizApp";
 import PrefQuizApp from "./pages/PrefQuizApp";
-import MapIconQuizApp from "./pages/MacIconQuizApp";
+import MapiconQuizApp from "./pages/MapiconQuizApp";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import QuizPlay from "./pages/QuizPlay";
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "map-icon-quiz",
-        element: <MapIconQuizApp />,
+        element: <MapiconQuizApp />,
         errorElement: <ErrorPage />,
       },
       {
